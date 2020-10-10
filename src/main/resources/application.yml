@@ -1,0 +1,56 @@
+server:
+  port: 4567
+spring:
+  #邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: 403908086@qq.com
+#    password: DOOATPXMIUMVFDRK
+    password: evqjojgbobeabjac
+    default-encoding: UTF-8
+    # 使用SMTPS协议465端口 SSL证书Socket工厂 防止公网发送失败
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+    properties.mail.smtp.socketFactory.port: 465
+  data:
+    elasticsearch:
+      cluster-nodes: 10.2.0.5:9300
+      cluster-name: es_cluster
+      properties:
+        transport.tcp.connect_timeout: 5s
+  elasticsearch:
+    rest:
+      uris: 10.2.0.5:9200
+      username: elastic
+      password: elastic
+  kafka:
+    bootstrap-servers: 10.2.0.5:9092
+    producer:
+      acks: all
+      retries: 1
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  application:
+    name: LogReprocess
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    root: info
+    com.koal.ngaudit.rawlogtest.rawlogTest: info
+  file: logs/Log-reprocess.log
+project:
+  log-reprocess:
+    index-prefix: sso_audit_log
+    topic: 276376e0-c676-46e6-94f8-c07c9bdd0bcb
+#    topic: test01
+    start-time: 2019-12-03
+    end-time: 2019-12-05
+    page-size: 10000
+
+
