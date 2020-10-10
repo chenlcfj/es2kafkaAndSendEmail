@@ -4,7 +4,7 @@ spring:
   #邮箱配置
   mail:
     host: smtp.qq.com
-    username: 403908086@qq.com
+    username: 41150866@qq.com
 #    password: DOOATPXMIUMVFDRK
     password: evqjojgbobeabjac
     default-encoding: UTF-8
@@ -14,17 +14,17 @@ spring:
     properties.mail.smtp.socketFactory.port: 465
   data:
     elasticsearch:
-      cluster-nodes: 10.2.0.5:9300
+      cluster-nodes: 10.2.0.100:9300
       cluster-name: es_cluster
       properties:
         transport.tcp.connect_timeout: 5s
   elasticsearch:
     rest:
-      uris: 10.2.0.5:9200
+      uris: 10.2.0.100:9200
       username: elastic
       password: elastic
   kafka:
-    bootstrap-servers: 10.2.0.5:9092
+    bootstrap-servers: 10.2.0.100:9092
     producer:
       acks: all
       retries: 1
